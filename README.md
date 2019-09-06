@@ -1,2 +1,2 @@
 # angular-erp
-Projeto ERP gerencial desenvolvido com Angular com finalidade de controlar Fluxo administrativo de uma empresa.
+Aplicação de Controle e gerenciamento comercial, com foco em produção de mercadorias, controlando Fluxo financeiro, pagamentos recebimentos, estoque de produtos e materia prima.

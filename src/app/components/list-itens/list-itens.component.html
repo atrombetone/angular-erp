@@ -1,0 +1,37 @@
+<mat-list>
+  <mat-list-item *ngFor="let obj of dataList" style="cursor: pointer">
+    <h3 mat-line  (click)="editarcadastro(obj)">{{ obj.nmRazaoSocial }}</h3>
+    <span mat-line  (click)="editarcadastro(obj)">{{ obj.nmFantasia }}</span>
+    <p mat-line  (click)="editarcadastro(obj)"><mat-icon aria-hidden="false">phone</mat-icon> {{obj.nuFone}} - {{ obj.dsEMail }}</p>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item [routerLink]="['/edit-pessoa', obj.id]">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </a>
+        <button mat-menu-item (click)="removerPessoa(obj.id)">
+          <mat-icon>delete_forever</mat-icon>
+          <span>Excluir</span>
+        </button>
+        <a mat-menu-item href="tel:+55{{obj.nuFone}}">
+          <mat-icon>phone</mat-icon>
+          <span>Ligar</span>
+        </a>
+      </mat-menu>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+<div style="display: none;">
+  <h1 mat-dialog-title>Confirma Exclusão</h1>
+  <div mat-dialog-content>
+    <p>Confirma exclusão do registro?</p>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button>Não</button>
+    <button mat-button color="warn">Sim</button>
+  </div>
+</div>
+

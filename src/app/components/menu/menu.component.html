@@ -1,0 +1,123 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>ERP Master</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home">
+        <mat-icon aria-hidden="false" aria-label="icon">home</mat-icon> Home
+      </a>
+    </mat-nav-list>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Cadastros
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/pessoas">
+            <mat-icon aria-hidden="false" aria-label="icon">people</mat-icon> Pessoas
+          </a>
+          <a mat-list-item routerLink="/produtos">
+            <mat-icon aria-hidden="false" aria-label="icon">widgets</mat-icon> Produtos
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Movimentação
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/cliente">
+            <mat-icon aria-hidden="false" aria-label="icon">shopping_cart</mat-icon> Vendas
+          </a>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">list_alt</mat-icon> Orçamentos
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">shopping_basket</mat-icon> Compras
+          </a>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">speaker_notes</mat-icon> Orçamentos
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Financeiro
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/cliente">
+            <mat-icon aria-hidden="false" aria-label="icon">attach_money</mat-icon> A Receber
+          </a>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">business</mat-icon> A Pagar
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">monetization_on</mat-icon> Diário
+          </a>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">account_balance</mat-icon> Conciliação
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Relatórios
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/cliente">
+            <mat-icon aria-hidden="false" aria-label="icon">attach_money</mat-icon> A Receber
+          </a>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">business</mat-icon> A Pagar
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">monetization_on</mat-icon> Diário
+          </a>
+          <a mat-list-item routerLink="/fornecedor">
+            <mat-icon aria-hidden="false" aria-label="icon">account_balance</mat-icon> Conciliação
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ config.title }}</span>
+      <span class="fill-spacer"></span>
+      <span>
+          <button mat-raised-button color="primary" (click)="novoRegistro()" *ngIf="this.config.isNovoVisible">
+            <i class="material-icons">library_add</i> Novo
+          </button>
+      </span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

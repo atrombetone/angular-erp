@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fill-spacer {
+  flex: 1 1 auto;
+}
+
+.w15 {
+  width: 15%;
+  margin: 0px 10px 0px 10px;
+}
+
+.w25 {
+  width: 25%;
+  margin: 0px 10px 0px 10px;
+}
+
+.w30 {
+  width: 33%;
+  margin: 0px 10px 0px 10px;
+}
+
+.w50 {
+  width: 48%;
+  margin: 0px 10px 0px 10px;
+}
+
+.w75 {
+  width: 75%;
+  margin: 0px 10px 0px 10px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .w30 {
+    width: 100% !important;
+    margin: 0px;
+  }
+}

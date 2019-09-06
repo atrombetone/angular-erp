@@ -1,0 +1,108 @@
+<form [formGroup]="entidadeForm" novalidate (ngSubmit)="onSubmit()" #form="ngForm">
+  <mat-card class="list-card">
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="hidden" formControlName="idEmpresa" name="idEmpresa" />
+            <input type="hidden" formControlName="id" name="id"/>
+            <input matInput placeholder="Razão Social" formControlName="nmRazaoSocial" maxlength="60">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nome Fantasia" formControlName="nmFantasia" maxlength="60">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field class="w30">
+          <input matInput placeholder="Fone" formControlName="nuFone" type="number">
+        </mat-form-field>
+        <mat-form-field class="w30">
+          <input matInput placeholder="Email" formControlName="dsEmail" type="text">
+        </mat-form-field>
+        <mat-form-field class="w30">
+          <mat-label>Classificação</mat-label>
+          <mat-select [formControl]="entidadeForm.controls['clPessoa']"  multiple>
+            <mat-option *ngFor="let tipo of tiposEntidade" [value]="tipo">{{ tipo }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Endereço
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <mat-form-field class="w15">
+              <input matInput placeholder="CEP" formControlName="nuCep" maxlength="9">
+            </mat-form-field>
+            <button mat-mini-fab color="primary" (click)="buscarPorCep();  $event.preventDefault();">
+              <i class="material-icons">
+                search
+                </i></button>
+            <mat-form-field class="w75">
+              <input matInput placeholder="Logradouro" formControlName="dsLogradouro" maxlength="60">
+            </mat-form-field>
+            <mat-form-field class="w15">
+              <input matInput placeholder="Nº Logradouro" formControlName="nuLogradouro" maxlength="8">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="w30">
+              <input matInput placeholder="Bairro" formControlName="nmBairro" maxlength="30">
+            </mat-form-field>
+            <mat-form-field class="w15">
+              <input matInput placeholder="UF" formControlName="sgUf" maxlength="2">
+            </mat-form-field>
+            <mat-form-field class="w50">
+              <input type="hidden" formControlName="idCidade">
+              <input matInput placeholder="Cidade" formControlName="nmCidade" maxlength="60">
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Documentos
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <mat-form-field class="w30">
+              <mat-label>Física/Jurídica</mat-label>
+              <mat-select [formControl]="entidadeForm.controls['tpPessoa']">
+                <mat-option *ngFor="let t of tpfj" [value]="t.value">{{ t.label }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w30">
+              <input matInput placeholder="CPF/CNPJ" formControlName="nuCpfCnpj" type="text">
+            </mat-form-field>
+            <mat-form-field class="w30">
+              <input matInput placeholder="RG/Insc. Estadual" formControlName="nuRgIe" type="text">
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Observações
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <textarea matInput rows="10" formControlName="dsObservacao"></textarea>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Salvar</button>
+      <button mat-raised-button color="accent" (click)="voltar()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
